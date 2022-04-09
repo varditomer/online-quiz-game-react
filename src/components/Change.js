@@ -1,24 +1,18 @@
+const Change = ({ changeUsed, setChangeUsed, handleNextQuestion }) => {
 
-
-
-const Change = ({
-    data: { changeQuestion, setChangeQuestion, handleNextQuestion },
-}) => {
     const handelClick = () => {
-        setChangeQuestion(true);
-        handleNextQuestion()
+        setChangeUsed(true);
+        handleNextQuestion(false);
     };
 
+    if(!changeUsed){
+        return <button
+        onClick={()=>handelClick()}>&#9851;</button>
+    }
 
-return (!changeQuestion) ? (
+    return (<div className="used">&#9851;</div>);
 
-    <button
-        onClick={handelClick()}
-    >
-        &#9851;</button>
-) : (<div>s</div>
 
-);
+}
 
-};
 export default Change;

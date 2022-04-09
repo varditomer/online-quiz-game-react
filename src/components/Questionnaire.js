@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useSound from "use-sound";
-import correct from "../sounds/Correct Answer Sound Effect.mp3";
-import wrong from "../sounds/Wrong Answer sound effect.mp3";
+import correct from "../asset/sounds/Correct Answer Sound Effect.mp3";
+import wrong from "../asset/sounds/Wrong Answer sound effect.mp3";
 
 
 const Questionnaire = ({

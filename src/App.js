@@ -5,11 +5,11 @@ import { Questionnaire } from './components';
 
 import Timer from "./components/Timer";
 import Change from "./components/Change";
-import Fiftyfifty from "./components/Fiftyfifty";
 
 
 import Start from "./components/Start";
 import Timesup from "./components/Timesup";
+import DoubleTime from "./components/DoubleTime";
 
 
 
@@ -29,8 +29,6 @@ function App() {
   const [questions, setQuestions] = useState([]);
   const [currIndex, setCurrIndex] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [totalQuestion, setTotalQuestion] = useState(10);
-
 
 
   //tracking current earn and game status => when gameOver = true -> game is end,
@@ -38,11 +36,15 @@ function App() {
   const [earn, setEarn] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [timeOut, setTimeOut] = useState(false);
+  const [timer, setTimer] = useState(30);
+
 
 
   // Timer and Life_Lines
-  const [changeQuestion, setChangeQuestion] = useState(false);
-  const [fiftyFifty, setFiftyFifty] = useState(false);
+  const [doubleTimeUsed, setDoubleTimeUsed] = useState(false);
+  const [changeUsed, setChangeUsed] = useState(false);
+
+  // const [fiftyFifty, setFiftyFifty] = useState(false);
 
   //Questions's earn values
   const moneyPyramid = useMemo(
@@ -90,28 +92,22 @@ function App() {
       setEarn(moneyPyramid[10 - questionNumber].amount + earn);
     }
 
-    handleNextQuestion();
+    handleNextQuestion(true);
 
   };
 
   //lunching next question and stop showing corrrect answer
-  const handleNextQuestion = () => {
-    if (questionNumber == totalQuestion) {
+  const handleNextQuestion = (changeQuestion) => {
+    if (questionNumber === 10) {
       setGameOver(true);
     }
-    setQuestionNumber(questionNumber + 1);
+    if (changeQuestion) {
+      setQuestionNumber(questionNumber + 1);
+    }
     //show another question
     setCurrIndex(currIndex + 1);
   }
 
-  const handleTimesUp = () => {
-    if (questionNumber == 10) {
-      setGameOver(true);
-    }
-    setQuestionNumber(questionNumber + 1);
-    //show another question
-    setCurrIndex(currIndex + 1);
-  }
 
 
   //rendering screens and 
@@ -145,9 +141,22 @@ function App() {
                 <h1>Game over! <br /> <span className="big">{userName}</span> earn: ★ {earn} in total !</h1>
 
               ) : timeOut ? (
+
+
+                //sadely i have an unfixed problem:
+                //when player's time is up he needs to click the btn to continue the game
+                //right now when he does, the state of the useState const - timeOut
+                //change only by the 2nd click, what lead to another click and skiping a question
+                //i read that it's because of some problem in react changing state 
+                //and because Because setState() is an asynchronous function but wouldn't found a solution
+                //so at this moment the player needs to click 2 times and he loses another question.
+
                 <Timesup
                   userName={userName}
                   setTimeOut={setTimeOut}
+                  timeOut={timeOut}
+                  setGameOver={setGameOver}
+                  questionNumber={questionNumber}
                   handleNextQuestion={handleNextQuestion}
                 />
               ) : (
@@ -162,26 +171,30 @@ function App() {
                       <Timer
                         setTimeOut={setTimeOut}
                         questionNumber={questionNumber}
+                        timer={timer}
+                        setTimer={setTimer}
+                        changeUsed={changeUsed}
                       />
 
                     </div>
 
                     <div className="change">
 
-                      {/* <Change
-                        changeQuestion={changeQuestion}
-                        setChangeQuestion={setChangeQuestion}
+                      <Change
+                        changeUsed={changeUsed}
+                        setChangeUsed={setChangeUsed}
                         handleNextQuestion={handleNextQuestion}
-                      /> */}
+                      />
 
                     </div>
 
-                    <div className="fifty">
+                    <div className="double">
 
-                      <Fiftyfifty
-                        setTimeOut={setTimeOut}
-                        handleNextQuestion={handleNextQuestion}
-                        questionNumber={questionNumber}
+                      <DoubleTime
+                        doubleTimeUsed={doubleTimeUsed}
+                        setDoubleTimeUsed={setDoubleTimeUsed}
+                        timer={timer}
+                        setTimer={setTimer}
                       />
 
                     </div>
@@ -209,13 +222,14 @@ function App() {
             <div className="pyramid col-3">
 
               <div className="moneyList vh-100">
-                {moneyPyramid.map((m) => (
+                {moneyPyramid.map((m, idx) => (
                   <div
                     className={
                       questionNumber === m.id
                         ? "moneyListItem active row"
                         : "moneyListItem row"
                     }
+                    key={idx}
                   >
 
                     {/* money pyramid div with seperation for Quest.# & amount */}
@@ -244,7 +258,7 @@ function App() {
         </div>
 
       ) : (
-        <h2 className='text-2xl text-white font-bold'>Loading...</h2>
+        <h2 className='big'>Loading...</h2>
       )//questions.length > 0 ?
 
     );//return

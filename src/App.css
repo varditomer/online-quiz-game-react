@@ -110,6 +110,12 @@ h1 {
   position: relative;
 }
 
+.used{
+  text-decoration: line-through;
+  font-weight: 100;
+  color: red;
+}
+
 .timer {
   width: 70px;
   height: 70px;
@@ -137,6 +143,21 @@ h1 {
   top: 30px;
   left: 180px;
   font-size: 30px;
+  font-weight: 700;
+}
+
+.double {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 5px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 30px;
+  left: 280px;
+  font-size: 20px;
   font-weight: 700;
 }
 
@@ -255,8 +276,6 @@ h1 {
 }
 
 .timesup {
-  /* width: 250px;
-  height: 100px; */
   display: flex;
   flex-direction: column;
   align-items: center;
