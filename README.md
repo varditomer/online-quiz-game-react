@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# QUIZ TIME - A WEB TRIVIA GAME
+is a web app based on Reactjs as front end with ant design as React UI library, and deployed on netlify
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
+https://quiz-time-game.netlify.app/
 
-## Available Scripts
+### UI 
+screen shots from the app:
 
-In the project directory, you can run:
+(1) Welcome Screen:
+![image](https://user-images.githubusercontent.com/79985779/162590585-7bb478ca-4e8f-41cd-adf9-4235384b18bd.png)
 
-### `npm start`
+(2) Main Screen:
+![image](https://user-images.githubusercontent.com/79985779/162590607-399c91cb-befa-4b51-bb6b-b5cf714eff6d.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+(3) Time's Up screen:
+![image](https://user-images.githubusercontent.com/79985779/162590687-13c3ae25-b10f-4c9f-818c-e3c329349da6.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### How to develop it
+1. Clone on your local machine by using https://github.com/varditomer/online-quiz-game-react
+2. Navigate into the main directory
+3. Run npm install to install node modules
+5. Run npm start to run it locally then will open automatclly on your browser on localhost:3000 port
 
-### `npm test`
+##### Have Fun!!!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
